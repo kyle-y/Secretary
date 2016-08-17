@@ -1,7 +1,6 @@
 package com.example.yxb.secretary.fragment;
 
 import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -85,23 +84,15 @@ public class HomeFragment extends Fragment{
 
     private void hideMenu() {
         Log.i("aaa","hideMenu");
-
-        Log.i("aaa","height:"+height);
-        ValueAnimator animator = ValueAnimator.ofFloat(height);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(layout_buttons,"translationY",0f,height);
         animator.setDuration(500);
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                layout_buttons.setTranslationY((Float) animation.getAnimatedValue());
-            }
-        });
         animator.start();
         isHide = true;
     }
 
     private void showMenu() {
         Log.i("aaa","showMenu");
-        ObjectAnimator animator = ObjectAnimator.ofInt(layout_buttons,"height",(int)height);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(layout_buttons,"translationY",height,0f);
         animator.setDuration(500);
         animator.start();
         isHide = false;
