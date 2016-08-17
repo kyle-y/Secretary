@@ -1,13 +1,11 @@
 package com.example.yxb.secretary.activity;
 
-import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -19,10 +17,10 @@ import com.example.yxb.secretary.fragment.NewsFragment;
 import com.example.yxb.secretary.fragment.QueryFragment;
 import com.example.yxb.secretary.fragment.WechatFragment;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener,View.OnTouchListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private ImageView button_ic_home,button_ic_query,button_ic_wechat,button_ic_other,button_ic_slide;
-    private LinearLayout layout_buttons;
+    public LinearLayout layout_buttons;
     private FrameLayout layout_fragments;
     private DrawerLayout drawerLayout;
 
@@ -40,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         layout_buttons = (LinearLayout) findViewById(R.id.layout_buttons);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         layout_fragments = (FrameLayout) findViewById(R.id.layout_fragments);
-        layout_fragments.setOnTouchListener(this);
 
 
         button_ic_home.setOnClickListener(this);
@@ -76,8 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    private float startY, disY, buttonLayoutHeight;
-    private boolean isUp, isHide;
+    private float buttonLayoutHeight;
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -85,46 +81,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonLayoutHeight = layout_buttons.getHeight();
         Log.i("aaa","控件高度：" + buttonLayoutHeight);
     }
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        Log.i("aaa","进入onTouch" );
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                startY = event.getY();
-                Log.i("aaa","开始坐标：" + startY);
-                break;
-            case MotionEvent.ACTION_MOVE:
-                disY = event.getY() - startY;
-                Log.i("aaa","滑动距离：" + disY);
-                if (Math.abs(disY) > buttonLayoutHeight){
-                    isUp = disY < 0;//判断滑动方向
-                    if (isUp){
-                        if (isHide){//判断是否处于隐藏状态
-                            showMenu();
-                        }
-                    }else{
-                        if (!isHide){
-                            hideMenu();
-                        }
-                    }
-                }
-                break;
 
-        }
-        return true;
-    }
-
-    private void hideMenu() {
-        ObjectAnimator animator = ObjectAnimator.ofFloat(layout_buttons,"y",layout_buttons.getY(),layout_buttons.getY()+ buttonLayoutHeight);
-        animator.setDuration(500);
-        animator.start();
-        isHide = true;
-    }
-
-    private void showMenu() {
-        ObjectAnimator animator = ObjectAnimator.ofFloat(layout_buttons,"y",layout_buttons.getY(),layout_buttons.getY()- buttonLayoutHeight);
-        animator.setDuration(500);
-        animator.start();
-        isHide = false;
-    }
 }
