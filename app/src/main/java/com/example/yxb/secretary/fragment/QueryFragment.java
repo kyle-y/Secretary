@@ -34,7 +34,7 @@ public class QueryFragment extends Fragment implements ViewPager.OnPageChangeLis
         viewPager.setAdapter(adapter);
         tablayout.setupWithViewPager(viewPager);
 
-        FragmentFactory.createFragment(0);
+        FragmentFactory_tab.createFragment(0);
         viewPager.setOnPageChangeListener(this);
         return rootView;
     }
@@ -46,7 +46,7 @@ public class QueryFragment extends Fragment implements ViewPager.OnPageChangeLis
 
     @Override
     public void onPageSelected(int position) {
-        FragmentFactory.createFragment(position);
+        FragmentFactory_tab.createFragment(position);
     }
 
     @Override

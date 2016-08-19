@@ -1,15 +1,19 @@
 package com.example.yxb.secretary.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.yxb.secretary.R;
 import com.example.yxb.secretary.common.MyApplication;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * PACKAGE_NAME:com.example.yxb.secretary.adapter
@@ -19,12 +23,12 @@ import java.util.List;
  * MODIFY_BY:
  */
 public class MyNewsAdapter extends RecyclerView.Adapter<MyNewsAdapter.MyViewHolder>{
-    private List<String> dataList;
+    private List<Map<String, Object>> dataList;
 
-    public MyNewsAdapter(List<String> dataList) {
+    public MyNewsAdapter(List<Map<String, Object>> dataList) {
         this.dataList = dataList;
     }
-    private void updateData(List<String> list){
+    public void updateData(List<Map<String, Object>> list){
         this.dataList = list;
         notifyDataSetChanged();
     }
@@ -36,7 +40,10 @@ public class MyNewsAdapter extends RecyclerView.Adapter<MyNewsAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.textView_news_item.setText(dataList.get(position));
+        holder.news_tittle.setText(dataList.get(position).get("title").toString());
+        holder.news_time.setText(dataList.get(position).get("time").toString());
+        holder.news_topic.setText(dataList.get(position).get("topic").toString());
+        Picasso.with(MyApplication.getContext()).load(dataList.get(position).get("imageurl").toString()).into(holder.news_image);
     }
 
     @Override
@@ -45,10 +52,14 @@ public class MyNewsAdapter extends RecyclerView.Adapter<MyNewsAdapter.MyViewHold
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textView_news_item;
+        TextView news_tittle,news_time,news_topic;
+        ImageView news_image;
         public MyViewHolder(View itemView) {
             super(itemView);
-            textView_news_item = (TextView) itemView.findViewById(R.id.textView_news_item);
+            news_tittle = (TextView) itemView.findViewById(R.id.news_tittle);
+            news_time = (TextView) itemView.findViewById(R.id.news_time);
+            news_topic = (TextView) itemView.findViewById(R.id.news_topic);
+            news_image = (ImageView) itemView.findViewById(R.id.news_image);
         }
     }
 }

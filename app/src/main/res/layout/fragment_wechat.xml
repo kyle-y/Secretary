@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="90dp"
         android:orientation="vertical">
 
         <ImageView
@@ -20,12 +20,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="微信转账截图工具"
+            android:textColor="#fff"
             android:textSize="20sp"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="以下功能是会员专享哦！"
+            android:textStyle="italic"
             android:textSize="12sp"
             />
 

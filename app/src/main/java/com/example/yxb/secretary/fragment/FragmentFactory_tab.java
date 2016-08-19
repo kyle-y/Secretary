@@ -11,35 +11,24 @@ import java.util.HashMap;
  * CREATE_TIME:2016/8/9
  * MODIFY_BY:
  */
-public class FragmentFactory {
-    private HashMap<Integer, Fragment> fragmentHashMap = new HashMap<>();
-    public interface MeClick{
-        void meClick();
-    }
-    private MeClick meClick;
+public class FragmentFactory_tab {
+    private static HashMap<Integer, Fragment> fragmentHashMap = new HashMap<>();
 
-    public void setMeClick(MeClick meClick) {
-        this.meClick = meClick;
-    }
-
-    public Fragment createFragment(int position){
+    public static Fragment createFragment(int position){
         Fragment fragment = fragmentHashMap.get(position);
         if (fragment == null){
             switch (position){
                 case 0:
-                    fragment = new HomeFragment();
+                    fragment = new WeatherFragment();
                     break;
                 case 1:
-                    fragment = new QueryFragment();
+                    fragment = new ExpressFragment();
                     break;
                 case 2:
-                    fragment = new WechatFragment();
+                    fragment = new BusFragment();
                     break;
                 case 3:
-                    fragment = new NewsFragment();
-                    break;
-                case 4:
-                    meClick.meClick();
+                    fragment = new MapFragment();
                     break;
                 default:
                     break;

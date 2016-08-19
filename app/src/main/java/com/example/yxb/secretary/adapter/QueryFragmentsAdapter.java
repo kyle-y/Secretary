@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.yxb.secretary.fragment.FragmentFactory;
+import com.example.yxb.secretary.fragment.FragmentFactory_tab;
 
 /**
  * PACKAGE_NAME:com.example.yxb.secretary.adapter
@@ -24,7 +24,7 @@ public class QueryFragmentsAdapter extends FragmentPagerAdapter{
 
     @Override
     public Fragment getItem(int position) {
-        return FragmentFactory.createFragment(position);
+        return FragmentFactory_tab.createFragment(position);
     }
 
     @Override

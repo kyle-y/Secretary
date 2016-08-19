@@ -11,9 +11,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.example.yxb.secretary.R;
 import com.example.yxb.secretary.activity.MainActivity;
 import com.example.yxb.secretary.adapter.MyStraggerAdatper;
@@ -33,7 +33,7 @@ import java.util.List;
 public class HomeFragment extends Fragment{
     private RecyclerView home_recyclerView;
     private MainActivity mActivity;
-    private LinearLayout layout_buttons;
+    private BottomNavigationBar bottomNavigationBar;
     private boolean isHide = false;
     private float height;
     private List<String> tittles = Arrays.asList(new String[]{"手机归属地","黄历","违章查询",
@@ -51,8 +51,8 @@ public class HomeFragment extends Fragment{
         home_recyclerView.addItemDecoration(new DividerGridItemDecoration(MyApplication.getContext()));
 
         mActivity = (MainActivity) getActivity();
-        layout_buttons = mActivity.layout_buttons;
-        height = layout_buttons.getHeight();
+        bottomNavigationBar = mActivity.bottomnavigationbar;
+        height = bottomNavigationBar.getHeight();
 
 
 
@@ -84,7 +84,7 @@ public class HomeFragment extends Fragment{
 
     private void hideMenu() {
         Log.i("aaa","hideMenu");
-        ObjectAnimator animator = ObjectAnimator.ofFloat(layout_buttons,"translationY",0f,height);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(bottomNavigationBar,"translationY",0f,height);
         animator.setDuration(500);
         animator.start();
         isHide = true;
@@ -92,7 +92,7 @@ public class HomeFragment extends Fragment{
 
     private void showMenu() {
         Log.i("aaa","showMenu");
-        ObjectAnimator animator = ObjectAnimator.ofFloat(layout_buttons,"translationY",height,0f);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(bottomNavigationBar,"translationY",height,0f);
         animator.setDuration(500);
         animator.start();
         isHide = false;
