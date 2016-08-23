@@ -1,6 +1,6 @@
 package com.example.yxb.secretary.fragment;
 
-import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
@@ -41,9 +41,10 @@ public class NewsFragment extends Fragment{
     private RecyclerView news_recycleView;
     private MainActivity mActivity;
     private BottomNavigationBar bottomNavigationBar;
-    MyNewsAdapter adapter;
+    private MyNewsAdapter adapter;
     private boolean isHide = false;
     private float height;
+    private float oldHeight;
     private List<Map<String, Object>> data;
     private int page = 1;
 
@@ -64,6 +65,7 @@ public class NewsFragment extends Fragment{
         mActivity = (MainActivity) getActivity();
         bottomNavigationBar = mActivity.bottomnavigationbar;
         height = bottomNavigationBar.getHeight();
+        oldHeight = mActivity.layout_fragments.getHeight();
         news_recycleView.setOnScrollListener(new RecyclerView.OnScrollListener() {
 
             @Override
@@ -151,19 +153,35 @@ public class NewsFragment extends Fragment{
 
     }
 
+
     private void hideMenu() {
         Log.i("aaa","hideMenu");
-        ObjectAnimator animator = ObjectAnimator.ofFloat(bottomNavigationBar,"translationY",0f,height);
+        ValueAnimator animator = ValueAnimator.ofFloat(0f, height);
+        animator.setTarget(bottomNavigationBar);
         animator.setDuration(500);
         animator.start();
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                bottomNavigationBar.setTranslationY((Float) animation.getAnimatedValue());
+            }
+        });
+
         isHide = true;
     }
 
     private void showMenu() {
         Log.i("aaa","showMenu");
-        ObjectAnimator animator = ObjectAnimator.ofFloat(bottomNavigationBar,"translationY",height,0f);
+        ValueAnimator animator = ValueAnimator.ofFloat(height, 0f);
+        animator.setTarget(bottomNavigationBar);
         animator.setDuration(500);
         animator.start();
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                bottomNavigationBar.setTranslationY((Float) animation.getAnimatedValue());
+            }
+        });
         isHide = false;
     }
 

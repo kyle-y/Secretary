@@ -17,6 +17,11 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration
 
 	private static final int[] ATTRS = new int[] { android.R.attr.listDivider };
 	private Drawable mDivider;
+	private int size;
+
+	public void setSize(int size) {
+		this.size = size;
+	}
 
 	public DividerGridItemDecoration(Context context)
 	{
@@ -63,7 +68,7 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration
 			final int right = child.getRight() + params.rightMargin
 					+ mDivider.getIntrinsicWidth();
 			final int top = child.getBottom() + params.bottomMargin;
-			final int bottom = top + mDivider.getIntrinsicHeight();
+			final int bottom = top + mDivider.getIntrinsicHeight() + size;
 			mDivider.setBounds(left, top, right, bottom);
 			mDivider.draw(c);
 		}
@@ -81,7 +86,7 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration
 			final int top = child.getTop() - params.topMargin;
 			final int bottom = child.getBottom() + params.bottomMargin;
 			final int left = child.getRight() + params.rightMargin;
-			final int right = left + mDivider.getIntrinsicWidth();
+			final int right = left + mDivider.getIntrinsicWidth() + size;
 
 			mDivider.setBounds(left, top, right, bottom);
 			mDivider.draw(c);

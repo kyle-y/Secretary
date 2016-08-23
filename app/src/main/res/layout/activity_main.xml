@@ -25,7 +25,6 @@
             >
 
         </FrameLayout>
-
         <com.ashokvarma.bottomnavigation.BottomNavigationBar
             android:id="@+id/bottomnavigationbar"
             android:layout_width="match_parent"
@@ -33,7 +32,14 @@
             android:layout_alignParentBottom="true"
             >
         </com.ashokvarma.bottomnavigation.BottomNavigationBar>
+        <FrameLayout
+            android:id="@+id/layout_fragment_query"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/bottomnavigationbar"
+            >
 
+        </FrameLayout>
     </RelativeLayout>
 
 </android.support.v4.widget.DrawerLayout>

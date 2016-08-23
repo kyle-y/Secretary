@@ -3,8 +3,8 @@ package com.example.yxb.secretary.adapter;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -67,10 +67,10 @@ public class MyStraggerAdatper extends RecyclerView.Adapter<MyStraggerAdatper.St
     public void onBindViewHolder(final StraggerViewHolder holder, int position) {
         ViewGroup.LayoutParams lp = holder.textview_home_item.getLayoutParams();
         lp.height = mHeights.get(position);
-        lp.width = getWindowsWidth() / 3;
+        lp.width = getWindowsWidth() / 2;
         holder.textview_home_item.setLayoutParams(lp);
         holder.textview_home_item.setText(dataList.get(position));
-        holder.textview_home_item.setBackground(new ColorDrawable(getColor()));
+        holder.cardView.setCardBackgroundColor(getColor());
         holder.textview_home_item.setGravity(Gravity.CENTER);
 
         if (onItemClickListener != null){
@@ -102,9 +102,11 @@ public class MyStraggerAdatper extends RecyclerView.Adapter<MyStraggerAdatper.St
 
     class StraggerViewHolder extends RecyclerView.ViewHolder{
         TextView textview_home_item;
+        CardView cardView;
         public StraggerViewHolder(View itemView) {
             super(itemView);
             textview_home_item = (TextView) itemView.findViewById(R.id.textview_home_item);
+            cardView = (CardView) itemView.findViewById(R.id.cardView);
         }
     }
 

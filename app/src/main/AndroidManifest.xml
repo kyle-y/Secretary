@@ -12,6 +12,7 @@
     <!--获取GSM（2g）、WCDMA（联通3g）等网络状态的信息  -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!--获取wifi网络状态的信息 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!--保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -19,6 +20,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!--允许读取手机状态 用于创建BmobInstallation-->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
@@ -26,6 +29,9 @@
         android:supportsRtl="true"
         android:name=".common.MyApplication"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="Sg2gv1Qe4s9tnKQTPLFn0OPxOsMtPIGw" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,6 +45,9 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
         <activity android:name=".activity.SignInActivity"/>
+        <activity android:name=".activity.LoginActivity"/>
+        <activity android:name=".activity.CityChooseActivity"/>
+        <activity android:name=".activity.WebViewActivity"/>
     </application>
 
 </manifest>

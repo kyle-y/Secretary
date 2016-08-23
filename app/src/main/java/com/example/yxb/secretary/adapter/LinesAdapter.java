@@ -56,7 +56,12 @@ public class LinesAdapter extends BaseAdapter{
         }else{
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.item_text_line.setText(list.get(position));
+        String tempStr = list.get(position);
+        if (tempStr.equals("")){
+            viewHolder.item_text_line.setText("没有相关信息！");
+        }else{
+            viewHolder.item_text_line.setText(tempStr);
+        }
         return convertView;
     }
 

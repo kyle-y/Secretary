@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c9d5d5"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+        <TextView
+            android:id="@+id/text_other_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="洗车指数"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/text_other_index"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="较适宜"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            />
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/text_other_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="2"
+        android:text="较适宜洗车，未来一天无雨，风力较小，擦洗一新的汽车至少能保持一天。"
+        android:textSize="16sp"
+        android:textColor="#fff"
+        />
+</LinearLayout>

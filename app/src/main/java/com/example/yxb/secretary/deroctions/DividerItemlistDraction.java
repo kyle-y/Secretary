@@ -29,6 +29,12 @@ public class DividerItemlistDraction extends RecyclerView.ItemDecoration{
 
     private int mOrientation;
 
+    private int size = 1;
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
     public DividerItemlistDraction(Context context, int orientation) {
         final TypedArray a = context.obtainStyledAttributes(ATTRS);
         mDivider = a.getDrawable(0);
@@ -66,7 +72,7 @@ public class DividerItemlistDraction extends RecyclerView.ItemDecoration{
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child
                     .getLayoutParams();
             final int top = child.getBottom() + params.bottomMargin;
-            final int bottom = top + mDivider.getIntrinsicHeight();
+            final int bottom = top + mDivider.getIntrinsicHeight() + size;
             mDivider.setBounds(left, top, right, bottom);
             mDivider.draw(c);
         }
@@ -82,7 +88,7 @@ public class DividerItemlistDraction extends RecyclerView.ItemDecoration{
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child
                     .getLayoutParams();
             final int left = child.getRight() + params.rightMargin;
-            final int right = left + mDivider.getIntrinsicWidth();
+            final int right = left + mDivider.getIntrinsicWidth() + size;
             mDivider.setBounds(left, top, right, bottom);
             mDivider.draw(c);
         }
