@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.webkit.WebView;
 
 import com.example.yxb.secretary.R;
+import com.tencent.smtt.sdk.QbSdk;
 
 /**
  * PACKAGE_NAME:com.example.yxb.secretary.activity
@@ -16,13 +16,13 @@ import com.example.yxb.secretary.R;
  * MODIFY_BY:
  */
 public class WebViewActivity extends Activity{
-    WebView webView;
+    com.tencent.smtt.sdk.WebView webView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
-
-        webView = (WebView) findViewById(R.id.webView);
+        QbSdk.allowThirdPartyAppDownload(true);
+        webView = (com.tencent.smtt.sdk.WebView) findViewById(R.id.webView);
 
 
         Intent intent = getIntent();

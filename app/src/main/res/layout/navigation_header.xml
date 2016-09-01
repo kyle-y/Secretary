@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    android:orientation="vertical">
+    android:layout_height="300dp"
+    android:background="@color/main_color"
+    >
     <ImageView
         android:id="@+id/imageView_icon"
         android:layout_width="150dp"
@@ -11,24 +11,23 @@
         android:layout_centerInParent="true"
         android:src="@drawable/navigation_header_icon"
         />
-    <LinearLayout
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/back_cycle"
+        />
+
+    <TextView
+        android:id="@+id/text_nickName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView_icon"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        >
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="注册"
-            />
-
-        <Button
-            android:layout_marginLeft="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="登录"
-            />
-    </LinearLayout>
+        android:text="昵称"
+        android:textSize="20sp"
+        android:textColor="#fff"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        />
 </RelativeLayout>

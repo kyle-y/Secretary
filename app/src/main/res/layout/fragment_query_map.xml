@@ -3,9 +3,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <com.baidu.mapapi.map.MapView
+    <com.baidu.mapapi.map.TextureMapView
         android:id="@+id/bmapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clickable="true" />
+    <LinearLayout
+        android:id="@+id/layout_search"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/a3v"
+        >
+        <EditText
+            android:id="@+id/text_search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:hint="搜索地点、类型、城市"
+            android:imeOptions="actionSearch"
+            android:singleLine="true"
+            />
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="40dp"
+            android:background="#595b5d"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            />
+        <ImageView
+            android:id="@+id/tracffic"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/arrow_double"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/switch_tracffic"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/a3v"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/layout_search"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/switch_state_selector"
+        android:scaleType="centerCrop"
+        />
 </RelativeLayout>

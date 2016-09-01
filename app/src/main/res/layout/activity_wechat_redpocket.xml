@@ -156,14 +156,14 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/layout_tittle"
         android:layout_marginTop="20dp"
         android:background="#fff">
         <LinearLayout
             android:id="@+id/layout_bottom"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -183,6 +183,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/text_wallet_money_show"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -275,6 +276,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/text_wallet_time_show"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -315,14 +317,27 @@
                     android:textColor="#a2a2a2"
                     android:text="交易单号"
                     android:textSize="16sp" />
-
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="1000034401581604271980200000"
-                    android:textSize="16sp"
-                    />
+                    >
+                    <TextView
+                        android:id="@+id/text_wallet_number_show1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="100003"
+                        android:textSize="16sp"
+                        />
+                    <TextView
+                        android:id="@+id/text_wallet_number_last1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4401581604271980200000"
+                        android:textSize="16sp"
+                        />
+                </LinearLayout>
+
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -337,13 +352,26 @@
                     android:text="商户单号"
                     android:textSize="16sp" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="1000034401581604271980200000"
-                    android:textSize="16sp"
-                    />
+                    >
+                    <TextView
+                        android:id="@+id/text_wallet_number_show2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="100005"
+                        android:textSize="16sp"
+                        />
+                    <TextView
+                        android:id="@+id/text_wallet_number_last2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4401581604271980200000"
+                        android:textSize="16sp"
+                        />
+                </LinearLayout>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -359,6 +387,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/text_wallet_number_last3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -378,6 +407,7 @@
                 android:text="在线帮助"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
                 android:textSize="20sp"
                 android:textColor="#668795"
                 />

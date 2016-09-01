@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#0000"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0000"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/text_photo"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/a9ublue"
+            android:gravity="center"
+            android:text="从相册选取照片"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            />
+        <TextView
+            android:id="@+id/text_picture"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/a9ublue"
+            android:gravity="center"
+            android:text="拍照"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            />
+        <TextView
+            android:id="@+id/text_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/a9ublue"
+            android:gravity="center"
+            android:text="取消"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

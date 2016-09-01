@@ -3,6 +3,8 @@ package com.example.yxb.secretary.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -27,6 +29,7 @@ import com.example.yxb.secretary.common.db.DataBaseManager;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executors;
 
 /**
  * Created by Administrator on 2016/6/14.
@@ -86,12 +89,21 @@ public class CityChooseActivity extends Activity implements AdapterView.OnItemCl
     public void initData(){
         dbManager = DataBaseManager.getInstance(this);
 
-        try {
-            listItemProvince = dbManager.query2ListMap("select * from " + DBHelper.WEATHER_PROVINCE_TABLE  + ";",null, new WeatherIDProvinceBean());
-            provinceAdapter.setListData(listItemProvince);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            Executors.newCachedThreadPool().execute(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        listItemProvince = dbManager.query2ListMap("select * from " + DBHelper.WEATHER_PROVINCE_TABLE  + ";",null, new WeatherIDProvinceBean());
+                        Message msg = MyHandler.obtainMessage();
+                        msg.what = 0;
+                        MyHandler.sendMessage(msg);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+
     }
 
     public void initListener(){
@@ -110,13 +122,19 @@ public class CityChooseActivity extends Activity implements AdapterView.OnItemCl
                 provinceID = provinceAdapter.getItem(position).get("province_id").toString();
                 provinceName = provinceAdapter.getItem(position).get("name").toString();
 
-                try {
-                    listItemCity = dbManager.query2ListMap("select * from " + DBHelper.WEATHER_CITY_TABLE + " where province_id=?;", new String[]{provinceID}, new WeatherIDCityBean());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                cityAdapter.setListData(listItemCity);
-
+                Executors.newCachedThreadPool().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            listItemCity = dbManager.query2ListMap("select * from " + DBHelper.WEATHER_CITY_TABLE + " where province_id=?;", new String[]{provinceID}, new WeatherIDCityBean());
+                            Message msg = MyHandler.obtainMessage();
+                            msg.what = 1;
+                            MyHandler.sendMessage(msg);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
                 P_Cavilible(2);
                 break;
 
@@ -216,6 +234,19 @@ public class CityChooseActivity extends Activity implements AdapterView.OnItemCl
     public void afterTextChanged(Editable s) {
 
     }
-
-
+    //查询结束后，更新列表
+    private Handler MyHandler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            switch (msg.what){
+                case 0:
+                    provinceAdapter.setListData(listItemProvince);
+                    break;
+                case 1:
+                    cityAdapter.setListData(listItemCity);
+                    break;
+            }
+            return false;
+        }
+    });
 }

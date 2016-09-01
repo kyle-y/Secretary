@@ -15,6 +15,8 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final String WEATHER_PROVINCE_TABLE = "weather_province";
     public static final String WEATHER_CITY_TABLE = "weather_city";
 
+
+
     private static final String CREATE_WEAHTER_PROVINCE_SQL = "CREATE TABLE "
             + WEATHER_PROVINCE_TABLE
             + " (_id Integer primary key autoincrement,"
@@ -27,6 +29,7 @@ public class DBHelper extends SQLiteOpenHelper{
             + " province_id integer,"
             + " name text,"
             + " city_num integer);";
+
 
     public DBHelper(Context context){
         this(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -44,6 +47,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CREATE_WEAHTER_PROVINCE_SQL);
         sqLiteDatabase.execSQL(CREATE_WEAHTER_CITY_SQL);
+
     }
 
     @Override

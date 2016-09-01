@@ -19,7 +19,7 @@ public class ChangeFragmentUtils {
         FragmentTransaction transition = activity.getSupportFragmentManager().beginTransaction();
         if (!fragment.isAdded()){
             transition.add(containerID,fragment);
-            transition.addToBackStack(fragment.getClass().getName());
+//            transition.addToBackStack(fragment.getClass().getName());
             fragments.add(fragment);
         }else{
             transition.show(fragment);

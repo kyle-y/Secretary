@@ -156,14 +156,14 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="290dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/layout_tittle"
         android:layout_marginTop="20dp"
         android:background="#fff">
         <LinearLayout
             android:id="@+id/layout_bottom"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -183,6 +183,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/text_account_money_show"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -212,6 +213,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/text_account_name_show"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -276,6 +278,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/text_account_time_show"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -317,13 +320,27 @@
                     android:text="交易单号"
                     android:textSize="16sp" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="1000034401581604271980200000"
-                    android:textSize="16sp"
-                    />
+                    >
+                    <TextView
+                        android:id="@+id/text_account_number_show"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="100003"
+                        android:textSize="16sp"
+                        />
+                    <TextView
+                        android:id="@+id/text_account_number_last"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4401581604271980200000"
+                        android:textSize="16sp"
+                        />
+                </LinearLayout>
+
             </RelativeLayout>
 
             <ImageView
@@ -338,6 +355,7 @@
                 android:text="在线帮助"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
                 android:textSize="20sp"
                 android:textColor="#668795"
                 />

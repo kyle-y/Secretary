@@ -2,29 +2,72 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#b2c3c3"
     android:orientation="vertical"
     >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        >
 
         <EditText
             android:id="@+id/bus_line"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/a3v"
             android:hint="请输入公交线路"
             />
-        <Button
-            android:id="@+id/bus_query_line"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="查询"
-            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/bus_query_line"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/a9ublue"
+                android:text="候车查询"
+                android:textSize="16sp"
+                android:textColor="#fff"
+                />
+            <Button
+                android:id="@+id/bus_query_map"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/a9ublue"
+                android:text="线路查询"
+                android:textSize="16sp"
+                android:textColor="#fff"
+                />
+        </LinearLayout>
+
     </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2b2b2b"
+        />
+    <TextView
+        android:id="@+id/text_tips"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textColor="#2180ee"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:text="查询信息"
+        />
     <ListView
         android:id="@+id/list_line"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:cacheColorHint="#0000"
+
+        >
     </ListView>
 
 </LinearLayout>

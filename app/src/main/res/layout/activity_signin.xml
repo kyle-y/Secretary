@@ -7,13 +7,13 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:gravity="center_vertical"
-        android:background="@color/colorPrimary"
+        android:background="#2180ee"
         >
         <ImageView
             android:id="@+id/imageView_back4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/back3"
+            android:src="@drawable/selector_back"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -65,9 +65,12 @@
     <Button
         android:id="@+id/button_signin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:background="@drawable/a9ublue"
         android:layout_margin="20dp"
         android:text="注册"
+        android:textSize="20sp"
+        android:textColor="#fff"
         />
 
 </LinearLayout>

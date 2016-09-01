@@ -2,19 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f5f5f5"
+    android:background="@color/background"
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:gravity="center_vertical"
-        android:background="@color/colorPrimary"
+        android:background="#2180ee"
         >
         <ImageView
             android:id="@+id/imageView_back3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/back3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/selector_back"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -45,7 +46,7 @@
         android:src="@drawable/lonin_icon"
         android:scaleType="centerCrop"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         />
     <LinearLayout
         android:layout_width="match_parent"
@@ -58,6 +59,7 @@
             android:id="@+id/text_username"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:singleLine="true"
             android:hint="请输入用户名"
 
             />
@@ -65,14 +67,18 @@
             android:id="@+id/text_password"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:singleLine="true"
             android:hint="请输入密码"
             />
         <Button
             android:id="@+id/button_login"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_gravity="center_horizontal"
+            android:background="@drawable/a9ublue"
             android:text="登录"
+            android:textColor="#fff"
+            android:textSize="20sp"
             />
         <RelativeLayout
             android:layout_width="match_parent"
@@ -82,14 +88,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="手机验证码登录"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#2180ee"
                 />
             <TextView
                 android:id="@+id/textView_forget_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#2180ee"
                 android:text="忘记密码"
                 />
         </RelativeLayout>

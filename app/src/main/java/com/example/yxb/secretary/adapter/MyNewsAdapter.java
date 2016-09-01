@@ -1,7 +1,7 @@
 package com.example.yxb.secretary.adapter;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.yxb.secretary.R;
+import com.example.yxb.secretary.activity.NewsContentActivity;
 import com.example.yxb.secretary.common.MyApplication;
 import com.squareup.picasso.Picasso;
 
@@ -39,11 +40,23 @@ public class MyNewsAdapter extends RecyclerView.Adapter<MyNewsAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
         holder.news_tittle.setText(dataList.get(position).get("title").toString());
         holder.news_time.setText(dataList.get(position).get("time").toString());
         holder.news_topic.setText(dataList.get(position).get("topic").toString());
         Picasso.with(MyApplication.getContext()).load(dataList.get(position).get("imageurl").toString()).into(holder.news_image);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.putExtra("title", dataList.get(position).get("title").toString());
+                intent.putExtra("content", dataList.get(position).get("content").toString());
+                intent.setClass(MyApplication.getContext(), NewsContentActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                MyApplication.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

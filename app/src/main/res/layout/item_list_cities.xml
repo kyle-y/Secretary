@@ -7,7 +7,7 @@
         android:id="@+id/textview_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#ffffff"
+        android:textColor="#fff"
         android:layout_gravity="center"
         android:singleLine="true"
         android:textSize="16sp"

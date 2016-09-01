@@ -30,27 +30,52 @@
             android:textStyle="italic"
             android:textSize="12sp"
             />
-
-        <Button
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:id="@+id/button_wallet"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:background="@drawable/a9u"
-            android:text="微信红包" />
+            android:columnCount="2"
+            android:rowCount="2"
+            >
+            <Button
+                android:id="@+id/button_wallet"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/a9u2"
+                android:layout_margin="5dp"
+                android:textSize="18sp"
+                android:textColor="#fff"
+                android:text="微信红包" />
 
-        <Button
-            android:id="@+id/button_acount"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:background="@drawable/a9u"
-            android:text="微信转账" />
+            <Button
+                android:id="@+id/button_acount"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/a9u2"
+                android:textSize="18sp"
+                android:layout_margin="5dp"
+                android:textColor="#fff"
+                android:text="微信转账" />
 
-        <Button
-            android:id="@+id/button_getmoney"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:background="@drawable/a9u"
-            android:text="收款成功" />
+            <Button
+                android:id="@+id/button_getmoney"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/a9u2"
+                android:textSize="18sp"
+                android:layout_margin="5dp"
+                android:textColor="#fff"
+                android:text="微信收款" />
+            <Button
+                android:id="@+id/button_chat"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/a9u2"
+                android:textSize="18sp"
+                android:layout_margin="5dp"
+                android:textColor="#fff"
+                android:text="微信聊天" />
+        </GridLayout>
+
     </LinearLayout>
 </RelativeLayout>

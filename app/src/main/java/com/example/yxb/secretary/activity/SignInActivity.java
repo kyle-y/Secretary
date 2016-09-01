@@ -6,9 +6,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.yxb.secretary.R;
+import com.example.yxb.secretary.bean.MyUser;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -24,10 +26,11 @@ import cn.bmob.v3.listener.SaveListener;
  * MODIFY_BY:
  */
 public class SignInActivity extends Activity implements View.OnClickListener{
-    EditText editText_username,editText_password,editText_password_confirm;
-    Button button_signin;
-    String userName,password,password2;
-    BmobUser user;
+    private EditText editText_username,editText_password,editText_password_confirm;
+    private Button button_signin;
+    private String userName,password,password2;
+    private MyUser user;
+    private ImageView imageView_back4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,10 +39,12 @@ public class SignInActivity extends Activity implements View.OnClickListener{
         button_signin = (Button) findViewById(R.id.button_signin);
         editText_username = (EditText) findViewById(R.id.editText_username);
         editText_password = (EditText) findViewById(R.id.editText_password);
+        imageView_back4 = (ImageView) findViewById(R.id.imageView_back4);
         editText_password_confirm = (EditText) findViewById(R.id.editText_password_confirm);
-        user = new BmobUser();
+        user = new MyUser();
 
         button_signin.setOnClickListener(this);
+        imageView_back4.setOnClickListener(this);
     }
 
     @Override
@@ -50,6 +55,7 @@ public class SignInActivity extends Activity implements View.OnClickListener{
                     user.setUsername(userName);
                     String password_MD5 = DigestUtils.md5Hex(password.getBytes());
                     user.setPassword(password_MD5);
+                    user.setGoldBeanNum(1000);
                     Log.i("aaa","密码：" + password_MD5);
                     user.signUp(new SaveListener<BmobUser>() {
 
@@ -63,6 +69,9 @@ public class SignInActivity extends Activity implements View.OnClickListener{
                         }
                     });
                 }
+                break;
+            case R.id.imageView_back4:
+                SignInActivity.this.finish();
                 break;
         }
     }

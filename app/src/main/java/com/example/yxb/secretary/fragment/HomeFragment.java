@@ -2,12 +2,14 @@ package com.example.yxb.secretary.fragment;
 
 import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,26 +38,25 @@ import java.util.List;
 public class HomeFragment extends Fragment{
     private RecyclerView home_recyclerView;
     private MainActivity mActivity;
+    private Toolbar toolbar_home;
     private BottomNavigationBar bottomNavigationBar;
     private DividerGridItemDecoration dividerGridItemDecoration;
     private boolean isHide = false;
     private List<String> tittles = Arrays.asList(new String[]{"百度","手机归属地","黄历","违章查询",
-            "彩票开奖","汇率换算","驾考题库","标准体重","火车票查询","IP地址查询","汽车票",
-            "微信热门","汽车标志","常用电话"});
-    private List<String> urls = Arrays.asList(new String[]{"http://wap.baidu.com"
-            ,"http://wap.ip138.com/sim.html"
-            ,"http://http://tools.2345.com/jrhl.htm"
-            ,"http://light.weiche.me/#&index"
-            ,"http://m.500.com/info/kaijiang/"
-            ,"http://m.cngold.org/home/dy157.html"
-            ,"http://m.jkydt.com/"
-            ,"http://tools.2345.com/m/study_tizhong.htm"
-            ,"http://m.ctrip.com/webapp/train"
-            ,"http://www.ip.cn/"
-            ,"http://m.ctrip.com/webapp/bus"
-            ,"http://wx.html5.qq.com"
-            ,"http://m.58che.com/car/brand.html"
-            ,"http://tools.2345.com/m/tefudh.htm"
+            "彩票开奖","汇率换算","驾考题库","标准体重","火车票/汽车票","IP地址查询",
+            "汽车标志","常用电话"});
+    private List<String> urls = Arrays.asList(new String[]{"http://wap.baidu.com"   //百度
+            ,"http://wap.ip138.com/sim.html"    //手机归属地
+            ,"http://m.laohuangli.net"    //黄历
+            ,"http://m.chaxun.weizhang8.cn"   //违章查询
+            ,"http://m.500.com/info/kaijiang/#h5"  //彩票开奖
+            ,"http://m.cngold.org/home/dy157.html"  //汇率换算
+            ,"http://m.jkydt.com/"  //驾考题库
+            ,"http://tools.2345.com/m/study_tizhong.htm"    //标准体重
+            ,"http://m.tieyou.com"  //火车票、汽车票
+            ,"http://www.ip.cn/"    //IP地址查询
+            ,"http://m.58che.com/car/brand.html"    //汽车标志
+            ,"http://tools.2345.com/m/tefudh.htm"   //常用电话
             });
     @Nullable
     @Override
@@ -66,8 +67,12 @@ public class HomeFragment extends Fragment{
         MyStraggerAdatper adatper = new MyStraggerAdatper(MyApplication.getContext(),tittles);
         home_recyclerView.setAdapter(adatper);
         dividerGridItemDecoration = new DividerGridItemDecoration(MyApplication.getContext());
-        dividerGridItemDecoration.setSize(UiUtils.dip2px(20));
+        dividerGridItemDecoration.setSize(UiUtils.dip2px(10));
         home_recyclerView.addItemDecoration(dividerGridItemDecoration);
+
+        toolbar_home = (Toolbar) view.findViewById(R.id.toolbar_home);
+        toolbar_home.setTitle("分类查询工具");
+        toolbar_home.setTitleTextColor(Color.WHITE);
 
         mActivity = (MainActivity) getActivity();
         bottomNavigationBar = mActivity.bottomnavigationbar;

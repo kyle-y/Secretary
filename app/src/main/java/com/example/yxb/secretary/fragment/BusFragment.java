@@ -1,5 +1,6 @@
 package com.example.yxb.secretary.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,9 +11,11 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.yxb.secretary.R;
+import com.example.yxb.secretary.activity.BusLineSearchActivity;
 import com.example.yxb.secretary.adapter.LinesAdapter;
 import com.example.yxb.secretary.common.MyApplication;
 import com.example.yxb.secretary.utils.ParseXmlTag;
@@ -38,9 +41,10 @@ import okhttp3.Response;
  * MODIFY_BY:
  */
 public class BusFragment extends Fragment implements View.OnClickListener,AdapterView.OnItemClickListener{
-    EditText bus_line;
-    Button bus_query_line;
-    ListView list_line;
+    private EditText bus_line;
+    private Button bus_query_line, bus_query_map;
+    private ListView list_line;
+    private TextView text_tips;
     private String result;
     private List<String> lines;
     private List<String> Stations;
@@ -65,7 +69,9 @@ public class BusFragment extends Fragment implements View.OnClickListener,Adapte
 
         bus_line = (EditText) view.findViewById(R.id.bus_line);
         bus_query_line = (Button) view.findViewById(R.id.bus_query_line);
+        bus_query_map = (Button) view.findViewById(R.id.bus_query_map);
         list_line = (ListView) view.findViewById(R.id.list_line);
+        text_tips = (TextView) view.findViewById(R.id.text_tips);
 
         lines = new ArrayList<String>();
         Stations = new ArrayList<String>();
@@ -76,6 +82,7 @@ public class BusFragment extends Fragment implements View.OnClickListener,Adapte
 
         list_line.setOnItemClickListener(this);
         bus_query_line.setOnClickListener(this);
+        bus_query_map.setOnClickListener(this);
         return view;
     }
 
@@ -90,6 +97,17 @@ public class BusFragment extends Fragment implements View.OnClickListener,Adapte
                 lineNum = bus_line.getText().toString();
                 if (!lineNum.isEmpty()){
                     getLineNums(lineNum);
+                }else{
+                    Toast.makeText(MyApplication.getContext(), "输入为空！", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.bus_query_map:
+                lineNum = bus_line.getText().toString();
+                if (!lineNum.isEmpty()){
+                    Intent intent = new Intent(MyApplication.getContext(), BusLineSearchActivity.class);
+                    intent.putExtra("city","郑州");
+                    intent.putExtra("line", lineNum);
+                    startActivity(intent);
                 }else{
                     Toast.makeText(MyApplication.getContext(), "输入为空！", Toast.LENGTH_SHORT).show();
                 }
@@ -141,6 +159,7 @@ public class BusFragment extends Fragment implements View.OnClickListener,Adapte
                 UiUtils.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        text_tips.setText("请选择方向");
                         adapter.update(lines);
                     }
                 });
@@ -178,6 +197,7 @@ public class BusFragment extends Fragment implements View.OnClickListener,Adapte
                 UiUtils.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        text_tips.setText("请选择您所在的站点");
                         adapter.update(Stations);
                         state = STATE_SATATIONS;
                     }
@@ -218,6 +238,7 @@ public class BusFragment extends Fragment implements View.OnClickListener,Adapte
                 UiUtils.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        text_tips.setText("班车信息为：");
                         adapter.update(results);
                         state = STATE_RESULTS;
                     }
